@@ -15,10 +15,15 @@ class Matrix:
             raise ValueError("Incompatible matrix dimensions")
 
         result = []
+
         for row in self.values:
             result_row = []
+
             for col in zip(*other.values):
-                result_row.append(sum(a * b for a, b in zip(row, col)))
+                result_row.append(
+                    sum(a * b for a, b in zip(row, col))
+                )
+
             result.append(result_row)
 
         return Matrix(result)
