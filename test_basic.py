@@ -71,3 +71,10 @@ def test_numpy_vector_dot_product():
     v1 = NumPyVector([1, 2, 3])
     v2 = NumPyVector([4, 5, 6])
     assert v1.dot(v2) == 32
+
+
+def test_batch_vector_addition():
+    vectors_a = [Vector([1, 2]), Vector([3, 4])]
+    vectors_b = [Vector([5, 6]), Vector([7, 8])]
+    result = Vector.batch_add(vectors_a, vectors_b)
+    assert [v.values for v in result] == [[6, 8], [10, 12]]
