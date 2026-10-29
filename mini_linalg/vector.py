@@ -13,5 +13,11 @@ class Vector:
             raise ValueError("Vectors must have the same dimension")
         return Vector([a - b for a, b in zip(self.values, other.values)])
 
+    @staticmethod
+    def batch_add(vectors_a, vectors_b):
+        if len(vectors_a) != len(vectors_b):
+            raise ValueError("Batch sizes must match")
+        return [a + b for a, b in zip(vectors_a, vectors_b)]
+
     def __repr__(self):
         return f"Vector({self.values})"

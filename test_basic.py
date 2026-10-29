@@ -18,3 +18,11 @@ def test_matrix_multiplication():
     A = Matrix([[1, 2], [3, 4]])
     B = Matrix([[5, 6], [7, 8]])
     assert (A @ B).values == [[19, 22], [43, 50]]
+
+def test_batch_vector_addition():
+    vectors_a = [Vector([1, 2]), Vector([3, 4])]
+    vectors_b = [Vector([5, 6]), Vector([7, 8])]
+
+    result = Vector.batch_add(vectors_a, vectors_b)
+
+    assert [v.values for v in result] == [[6, 8], [10, 12]]
