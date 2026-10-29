@@ -1,3 +1,4 @@
+import pytest
 
 from mini_linalg import Vector, Matrix
 
@@ -18,3 +19,27 @@ def test_matrix_multiplication():
     A = Matrix([[1, 2], [3, 4]])
     B = Matrix([[5, 6], [7, 8]])
     assert (A @ B).values == [[19, 22], [43, 50]]
+
+
+def test_vector_addition_dimension_mismatch():
+    v1 = Vector([1, 2])
+    v2 = Vector([1, 2, 3])
+
+    with pytest.raises(ValueError):
+        v1 + v2
+
+
+def test_matrix_multiplication_dimension_mismatch():
+    A = Matrix([[1, 2], [3, 4]])
+    B = Matrix([[1, 2], [3, 4], [5, 6]])
+
+    with pytest.raises(ValueError):
+        A @ B
+
+
+def test_empty_matrix_multiplication():
+    A = Matrix([])
+    B = Matrix([[1, 2], [3, 4]])
+
+    with pytest.raises(ValueError):
+        A @ B
